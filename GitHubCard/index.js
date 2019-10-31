@@ -2,7 +2,21 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
+let cards = document.querySelector('.cards')
+let apiCall = `https://api.github.com/users/JordanAlexander22`
 
+
+axios.get(apiCall)
+  .then(res => {
+    console.log(res.data)
+    let myObj = res.data;
+    console.log(`prop check`, myObj)
+    cards.appendChild(myCard(myObj))
+        
+  })
+  .catch(error => {
+    console.log(`No git users here`, error)
+  })
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
    data in order to use it to build your component function 
